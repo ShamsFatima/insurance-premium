@@ -1,16 +1,18 @@
 # Insurance Premium Calculator
 
-This application allows a user to calculate the monthly life insurance premium based on age next birthday, occupation risk factor, and death cover amount.
+This project calculates the monthly life insurance premium based on the user’s age next birthday, occupation risk category, and death sum insured. The goal was to implement the formula clearly and demonstrate clean coding practices with meaningful Git commit history.
 
-The solution is built using **Angular (Standalone Components)** and **Reactive Forms**.
+The application is implemented using **Angular Standalone Components** with **Reactive Forms**.
 
 ---
 
 ## 🧮 Premium Formula
 
+Monthly Premium = (Death Cover Amount × Rating Factor × Age Next Birthday) / 1000 × 12
+
 ---
 
-## 👷 Occupation Rating Table
+## 👷 Occupation Rating Factors
 
 | Occupation | Rating       | Factor |
 | ---------- | ------------ | ------ |
@@ -26,48 +28,47 @@ The solution is built using **Angular (Standalone Components)** and **Reactive F
 
 ## 🎯 Features Implemented
 
-- Angular Reactive Form with validation for all input fields
-- Auto-calculation of premium when occupation dropdown changes
-- Clean UI layout with easy readability
-- Error-prevention through validation rules
+- Angular Reactive Form with validation for all fields
+- Automatic premium calculation triggered when occupation changes
+- Clean and simple UI layout
+- Code structured to be easy to read and extend
 
 ---
 
-## 🗄 Database Design (Conceptual — No actual DB required)
+## 🗄 Conceptual Database Design (If Extended Later)
 
 Table: Occupation
 
-OccupationId (PK) INT
+OccupationId INT (PK)
 OccupationName VARCHAR
 Rating VARCHAR
 Factor DECIMAL(10,2)
 
 Table: Member
 
-MemberId (PK) INT
+MemberId INT (PK)
 Name VARCHAR
 AgeNextBirthday INT
 DOB_MonthYear CHAR(7) -- Format: mm/YYYY
-OccupationId (FK) INT -- References Occupation.OccupationId
+OccupationId INT (FK → Occupation.OccupationId)
 DeathSumInsured DECIMAL(18,2)
 MonthlyPremium DECIMAL(18,2)
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 Running the Application
 
 ```bash
 npm install
 npm start
 ```
 
-http://localhost:4200/
-✅ Assumptions & Clarifications
+✅ Assumptions
 
-Age Next Birthday is entered directly by the user (not automatically derived from DOB).
+Age Next Birthday is manually entered by the user (not calculated from DOB).
 
-DOB stored and displayed as mm/YYYY format only.
+DOB is captured in mm/YYYY format as required.
 
-Occupation list and rating factors are static and taken directly from the requirement.
+Occupation list and factor values are static and based on the specification.
 
-No backend or persistence layer is required for this submission — only UI logic.
+No backend persistence is required for this iteration.
